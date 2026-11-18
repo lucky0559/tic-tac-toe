@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #f6f7f9;
+  --ink: #1b1f27;
+  --muted: #5d6675;
+  --line: #d8dce3;
+  --x: #1d4ed8;
+  --o: #c2410c;
+  --win: #dcfce7;
+  --win-line: #16a34a;
+}
+
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+
+.wrap { min-height: 100svh; display: grid; align-content: center; justify-items: center; gap: 1rem; padding: 1.5rem 1rem; }
+
+h1 { margin: 0; font-size: 1.75rem; }
+.status { margin: 0; color: var(--muted); font-size: 1.05rem; min-height: 1.5em; }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: min(90vw, 360px);
+  aspect-ratio: 1;
+}
+
+.square {
+  font: inherit;
+  font-size: clamp(2.5rem, 14vw, 4rem);
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.12s, border-color 0.12s;
+}
+.square:hover:not(:disabled) { border-color: var(--muted); }
+.square:focus-visible, .restart:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+.square:disabled { cursor: default; }
+.mark-X { color: var(--x); }
+.mark-O { color: var(--o); }
+.square.win { background: var(--win); border-color: var(--win-line); }
+
+.restart {
+  font: inherit;
+  padding: 0.6rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+
+.score { display: flex; gap: 1.5rem; margin: 0; }
+.score div { text-align: center; }
+.score dt { color: var(--muted); font-size: 0.85rem; }
+.score dd { margin: 0; font-size: 1.25rem; font-weight: 700; }
